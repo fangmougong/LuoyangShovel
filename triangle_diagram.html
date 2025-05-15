@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>三角形分段定理与余弦定理图示</title>
+  <style>
+    body { display: flex; flex-wrap: wrap; margin-top: 150px;  justify-content: space-around; background: #f9f9f9; font-family: 'Segoe UI', 'PingFang SC', Arial, sans-serif; }
+    .diagram-title { font-size: 1.5em; font-weight: bold; margin: 24px 0 8px 0; color: #222; }
+    .svg-container { background: #fff; border-radius: 18px; box-shadow: 0 2px 12px #0001; padding: 24px; margin-bottom: 32px; display: inline-block; }
+    .label { font-size: 1.1em; fill: #333; font-weight: bold; }
+    .side-label { font-size: 1em; fill: #080808; font-weight: bold; }
+    .angle-label { font-size: 1em; fill: #d32f2f; font-weight: bold; }
+    .dashed { stroke-dasharray: 5,5; }
+    .helper { stroke: #aaa; stroke-width: 3; }
+    .highlight { stroke: #1976d2; stroke-width: 2.5; }
+    .right-angle { fill: none; stroke: #d32f2f; stroke-width: 2; }
+    .mark { fill: #fffbe7; stroke: #fbc02d; stroke-width: 1.2; }
+    #arrowMarker { fill: #666; }
+  </style>
+</head>
+<body>
+
+  <!-- <div class="diagram-title">直角三角形</div> -->
+  <div class="svg-container">
+    <svg width="340" height="200">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon id="arrowMarker" points="0 0, 10 3.5, 0 7" />
+        </marker>
+      </defs>
+      <!-- 三角形 -->
+      <polygon points="40,140 40,40 200,140" fill="#e3f2fd" stroke="#1976d2" stroke-width="2.5" />
+      <!-- 边标注 -->
+      <!-- <text x="120" y="155" class="side-label">c</text>
+      <text x="25" y="90" class="side-label">b</text>
+      <text x="120" y="60" class="side-label">a</text> -->
+      <!-- 顶点标注 -->
+      <text x="30" y="155" class="label">A</text>
+      <text x="210" y="155" class="label">B</text>
+      <text x="30" y="35" class="label">C</text>
+      <!-- 直角符号 -->
+       <!-- points参数含义 -->
+      <!-- 第一个点：直角符号的起点 -->
+      <!-- 第二个点：直角符号的终点 -->
+      <!-- 第三个点：直角符号的起点的垂线终点 -->
+      <polyline points="52,140 52,128 40,128" class="right-angle" />
+    </svg>
+  </div>
+
+  <!-- <div class="diagram-title">锐角三角形</div> -->
+  <div class="svg-container">
+    <svg width="340" height="200">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon id="arrowMarker" points="0 0, 10 3.5, 0 7" />
+        </marker>
+      </defs>
+      <!-- 三角形 -->
+      <polygon points="60,180 160,60 260,180" fill="#e8f5e9" stroke="#388e3c" stroke-width="2.5" />
+      <!-- 高 -->
+      <line x1="160" y1="60" x2="160" y2="180" class="helper dashed" />
+      <!-- 边标注 -->
+      <!-- <text x="110" y="200" class="side-label">x</text>
+      <text x="210" y="200" class="side-label">c-x</text>
+      <text x="90" y="90" class="side-label">b</text>
+      <text x="240" y="120" class="side-label">a</text> -->
+      <!-- 顶点标注 -->
+      <text x="50" y="195" class="label">A</text>
+      <text x="270" y="195" class="label">B</text>
+      <text x="150" y="50" class="label">C</text>
+      <!-- 高底交点 -->
+      <circle cx="160" cy="180" r="4" fill="#fffbe7" stroke="#fbc02d" stroke-width="1.2" />
+      <text x="150" y="200" class="label">D</text>
+      <!-- 直角符号 -->
+      <polyline points="148,180 148,168 160,168" class="right-angle" />
+    </svg>
+  </div>
+
+  <!-- <div class="diagram-title">锐角三角形</div> -->
+  <div class="svg-container">
+    <svg width="340" height="200">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon id="arrowMarker" points="0 0, 10 3.5, 0 7" />
+        </marker>
+      </defs>
+      <!-- 钝角三角形 -->
+      <polygon points="60,180 180,180 260,60" fill="#e1f5fe" stroke="#0288d1" stroke-width="2.5" />
+      <!-- 做底边延长虚线 -->
+      <line x1="180" y1="180" x2="280" y2="180" class="helper dashed" />
+      <!-- 做底边延长线高的垂线 -->
+      <line x1="260" y1="180" x2="260" y2="59" class="helper dashed" />
+      <!-- 做顶点标注 -->
+      <text x="50" y="200" class="label">A</text>
+      <text x="180" y="200" class="label">B</text>
+      <text x="265" y="55" class="label">C</text>
+      <!-- 做垂足标注 -->
+      <text x="265" y="200" class="label">D</text>
+      <!-- 绘制直角标注 -->
+      <polyline points="248,180 248,168 260,168" class="right-angle" />
+    </svg>
+  </div>
+
+  <!-- <div class="diagram-title">钝角三角形</div> -->
+  <div class="svg-container">
+    <svg width="340" height="200">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon id="arrowMarker" points="0 0, 10 3.5, 0 7" />
+        </marker>
+      </defs>
+      <!-- 钝角三角形 -->
+      <polygon points="60,180 180,180 260,60" fill="#e1f5fe" stroke="#0288d1" stroke-width="2.5" />
+      <!-- 做底边延长虚线 -->
+      <line x1="180" y1="180" x2="280" y2="180" class="helper dashed" />
+      <!-- 做底边延长线高的垂线 -->
+      <line x1="260" y1="180" x2="260" y2="59" class="helper dashed" />
+      <!-- 做顶点标注 -->
+      <text x="50" y="200" class="label">B</text>
+      <text x="180" y="200" class="label">A</text>
+      <text x="265" y="55" class="label">C</text>
+      <!-- 做垂足标注 -->
+      <text x="265" y="200" class="label">D</text>
+      <!-- 绘制直角标注 -->
+      <polyline points="248,180 248,168 260,168" class="right-angle" />
+    </svg>
+  </div>
+
+  <!-- <div class="diagram-title">可控区域模板</div> -->
+  <div class="svg-container">
+    <svg width="340" height="200">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon id="arrowMarker" points="0 0, 10 3.5, 0 7" />
+        </marker>
+      </defs>
+      
+      <!-- 外部静止点 -->
+      <circle cx="150" cy="20" r="5" fill="blue" stroke="black" stroke-width="1" />
+      <!-- 补充一条静态连接线 -->
+      <line x1="150" y1="20" x2="0" y2="150" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+      <!-- 连接线 -->
+      <line id="connector" x1="150" y1="20" x2="80" y2="150" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+
+      <!-- 再补充两条静态连接线，标注为虚线 -->
+      <line x1="150" y1="20" x2="80" y2="150" stroke="#666" stroke-width="2" stroke-dasharray="5,5"  marker-end="url(#arrowhead)" />
+      <line x1="150" y1="20" x2="278" y2="150" stroke="#666" stroke-width="2" stroke-dasharray="5,5"  marker-end="url(#arrowhead)" />
+      <line x1="150" y1="20" x2="150" y2="150" stroke="#666" stroke-width="2" stroke-dasharray="5,5"  marker-end="url(#arrowhead)" />
+
+      <!-- 运动的点，配套的运动线跑道 -->
+      <rect x="0" y="150" width="300" height="1" stroke="black" stroke-width="1"/>
+
+      <!-- 标注动点的起点 -->
+      <circle cx="80" cy="150" r="5" fill="orange" stroke="black" stroke-width="1" />
+      <!-- 标注动点的终点位置 -->
+      <circle cx="278" cy="150" r="5" fill="orange" stroke="black" stroke-width="1" />
+      <!-- 标记动点的垂足位置 -->
+      <circle cx="150" cy="150" r="5" fill="orange" stroke="black" stroke-width="1" />
+      <circle cx="80" cy="150" r="5" fill="orange" stroke="black" stroke-width="1">
+        <animateMotion id="motion1" path="M 0 0 H 200 Z" dur="3s" repeatCount="indefinite" begin="indefinite"/>
+      </circle>
+
+      <!-- 控制按钮 -->
+      <rect x="10" y="10" width="60" height="30" rx="5" fill="#1976d2" class="control-btn" style="cursor: pointer"/>
+      <text x="20" y="30" fill="white" style="user-select: none; cursor: pointer" class="control-btn">开始</text>
+    </svg>
+  </div>
+  
+</body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取核心的动点元素
+    const motion = document.getElementById('motion1');
+    // 获取控制按钮
+    const btns = document.getElementsByClassName('control-btn');
+    // 获取连接线对象
+    const connector = document.getElementById('connector');
+    let isPlaying = false;
+
+    // 更新连接线位置的函数
+    function updateConnector(x, y) {
+      connector.setAttribute('x2', x);
+      connector.setAttribute('y2', y);
+    }
+
+    // 监听动画过程更新连接线
+    function updateConnectorPosition() {
+      // 获取动画元素
+      const animatedCircle = motion.parentElement;
+      // 获取当前运动点的位置
+      const rect = animatedCircle.getBoundingClientRect();
+      const svgRect = animatedCircle.ownerSVGElement.getBoundingClientRect();
+      // 计算相对SVG的坐标
+      const x = rect.left - svgRect.left + rect.width/2;
+      const y = rect.top - svgRect.top + rect.height/2;
+      // 更新连接线终点
+      updateConnector(x, y);
+      if (isPlaying) {
+        requestAnimationFrame(updateConnectorPosition);
+      }
+    }
+
+    motion.addEventListener('beginEvent', function() {
+      updateConnectorPosition();
+    });
+
+    
+    for(let btn of btns) {
+      btn.addEventListener('click', function() {
+        if (!isPlaying) {
+          motion.beginElement();
+          document.querySelector('.control-btn[fill="white"]').textContent = '暂停';
+        } else {
+          motion.endElement();
+          // 保持连接线在当前位置
+          updateConnectorPosition();
+          document.querySelector('.control-btn[fill="white"]').textContent = '开始';
+        }
+        isPlaying = !isPlaying;
+      });
+    }
+  });
+</script>
+
+</html>
